@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f6f8">
+  <title>Resolve — Customer care, clearer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Resolve home">
+        <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg></span>
+        <span>resolve</span>
+      </a>
+      <div class="workspace">
+        <div class="workspace-icon">S</div>
+        <div class="workspace-copy"><strong id="workspace-name">Studio North</strong><small id="team-name">Customer support</small></div>
+        <span style="color:#9aa4b0">⌄</span>
+      </div>
+      <div class="nav-label">Workspace</div>
+      <nav class="nav-list" aria-label="Main navigation">
+        <a class="nav-link" href="#overview" data-section="overview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg><span>Overview</span></a>
+        <a class="nav-link active" href="#inbox" data-section="inbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 13h5l2 3h4l2-3h5"/></svg><span>Complaints</span><span class="nav-count" id="nav-count">0</span></a>
+        <a class="nav-link" href="#insights" data-section="insights"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 19V5m0 14h17"/><path d="m7 15 4-4 3 2 6-7"/></svg><span>Insights</span></a>
+        <a class="nav-link" href="#settings" id="settings-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-1.6 2.8-.2-.1a1.7 1.7 0 0 0-1.8.2l-.2.1h-3.2l-.1-.2a1.7 1.7 0 0 0-1.5-1.1 1.7 1.7 0 0 0-1.1.4l-.2.1-2.8-1.6.1-.2A1.7 1.7 0 0 0 7 15.5l-.1-.2v-3.2l.2-.1a1.7 1.7 0 0 0 1.1-1.5 1.7 1.7 0 0 0-.4-1.1l-.1-.2L9.3 6l.2.1a1.7 1.7 0 0 0 1.8-.2l.2-.1h3.2l.1.2a1.7 1.7 0 0 0 1.5 1.1 1.7 1.7 0 0 0 1.1-.4l.2-.1 2.8 1.6-.1.2a1.7 1.7 0 0 0 .2 1.8l.1.2v3.2l-.2.1a1.7 1.7 0 0 0-1.1 1.5"/></svg><span>Settings</span></a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="ai-tip"><div class="ai-tip-heading"><span class="sparkle">✳</span> <span id="ai-assist-label">AI assist is on</span></div><p id="ai-assist-description">Every new complaint is automatically categorized and prioritized to help your team respond faster.</p></div>
+        <div class="profile-area">
+          <div class="profile"><div class="avatar" id="manager-avatar">JD</div><div class="profile-copy"><strong id="manager-name">Jordan Davis</strong><small id="manager-role">Support manager</small></div><button class="profile-menu-button" id="profile-menu-button" type="button" aria-label="Open account options" aria-expanded="false">···</button></div>
+          <div class="account-menu" id="account-menu" hidden>
+            <div class="account-menu-heading">Switch account</div>
+            <div id="account-options"></div>
+            <button type="button" class="account-add-button" id="add-account-button"><span>＋</span> Add account</button>
+            <button type="button" class="account-add-button" id="profile-settings-button"><span>⚙</span> Profile settings</button>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <main>
+      <div class="topbar">
+        <div class="breadcrumbs">Workspace <span style="padding:0 6px;color:#c1c8d0">/</span> <strong>Complaints</strong></div>
+        <div class="top-actions">
+          <button class="icon-button" id="refresh-button" aria-label="Refresh complaints"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7v5h-5"/><path d="M4 17v-5h5"/><path d="M5.6 9a7 7 0 0 1 11.6-2L20 12M4 12l2.8 5a7 7 0 0 0 11.6-2"/></svg></button>
+          <button class="button-primary" data-open-form><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg> New complaint</button>
+        </div>
+      </div>
+      <section class="heading">
+        <div><h1>Complaints</h1><p class="subtitle">A little empathy goes a long way. Here's what's on your team's plate.</p></div>
+        <div class="date-label" id="today-label"></div>
+      </section>
+      <section class="metrics" id="overview" aria-label="Complaint overview">
+        <article class="metric"><div class="metric-top">Total complaints<span class="metric-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v12H8l-4 3z"/></svg></span></div><div class="metric-value" id="metric-total">—</div><div class="metric-note">All customer conversations</div></article>
+        <article class="metric"><div class="metric-top">Needs attention<span class="metric-icon" style="background:#fff5e9;color:#d09a48"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 9v4m0 4h.01"/><path d="M10.3 3.9 2.6 17.2a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></span></div><div class="metric-value" id="metric-open">—</div><div class="metric-note">Open or in progress</div></article>
+        <article class="metric"><div class="metric-top">Resolved<span class="metric-icon" style="background:#eaf7f1;color:#339573"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg></span></div><div class="metric-value" id="metric-resolved">—</div><div class="metric-note"><span class="up">Looking good</span> · all time</div></article>
+        <article class="metric"><div class="metric-top">High priority<span class="metric-icon" style="background:#fff0ef;color:#d67168"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 19V5m-6 6 6-6 6 6"/></svg></span></div><div class="metric-value" id="metric-high">—</div><div class="metric-note">Worth a closer look</div></article>
+      </section>
+      <section class="content-grid">
+        <section class="panel" id="inbox">
+          <header class="panel-head"><div><h2 class="panel-title">Recent complaints</h2><p class="panel-caption">Stay close to what your customers are saying</p></div><div class="filter-controls"><label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m16 16 4 4"/></svg><input id="search-input" type="search" placeholder="Search complaints..." aria-label="Search complaints"></label><select class="filter-select" id="status-filter" aria-label="Filter by status"><option value="All">All status</option><option>Open</option><option>In progress</option><option>Resolved</option></select></div></header>
+          <div class="table-wrap"><table><thead><tr><th>Customer</th><th>Subject</th><th>Category</th><th>Priority</th><th>Status</th></tr></thead><tbody id="complaint-rows"></tbody></table><div class="empty-state" id="empty-state" hidden>No complaints match your search.</div></div>
+          <footer class="table-footer"><span id="results-count"></span><span>AI-assisted triage <span style="color:#6280db">✳</span></span></footer>
+        </section>
+        <section class="panel insights-panel" id="insights">
+          <header class="panel-head"><div><h2 class="panel-title">Team insights</h2><p class="panel-caption">Patterns worth knowing about</p></div><span style="color:#7290e8">✳</span></header>
+          <div class="insight-content"><div class="insight-banner"><div class="insight-label"><span class="sparkle">✳</span> A thought for your team</div><p id="insight-summary">Looking at your recent complaints...</p></div><div class="section-mini-title">By category</div><div id="category-bars"></div></div>
+          <div class="insight-content"><div class="section-mini-title" style="margin-top:0">Resolution health</div><div class="response-card"><div class="response-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 19V5m0 14h17"/><path d="m7 15 4-4 3 2 6-7"/></svg></div><div class="response-stat"><strong id="resolution-rate">—</strong><span>Complaints resolved</span></div><span class="response-change" id="resolution-count"></span></div><p class="panel-caption" style="margin:12px 2px 0;line-height:1.55" id="resolution-caption">Resolution statistics load from your complaint records.</p></div>
+        </section>
+      </section>
+    </main>
+  </div>
+  <div class="modal-backdrop" id="form-backdrop" role="dialog" aria-modal="true" aria-labelledby="form-title">
+    <form class="modal" id="complaint-form">
+      <div class="modal-header"><div><h2 id="form-title">New complaint</h2><p>We'll take it from here. AI will help route it to the right team.</p></div><button type="button" class="close-button" data-close-form aria-label="Close">×</button></div>
+      <div class="form-grid">
+        <div class="field"><label for="customer-input">Customer name</label><input id="customer-input" name="customer" required maxlength="100" placeholder="e.g. Alex Morgan"></div>
+        <div class="field"><label for="email-input">Email address</label><input id="email-input" name="email" type="email" required maxlength="254" placeholder="alex@example.com"></div>
+        <div class="field full"><label for="subject-input">Subject</label><input id="subject-input" name="subject" required maxlength="160" placeholder="What's the issue about?"></div>
+        <div class="field full"><label for="message-input">What happened?</label><textarea id="message-input" name="message" required maxlength="4000" placeholder="Share a few details so we can help..."></textarea></div>
+      </div>
+      <div class="form-footer"><button type="button" class="button-secondary" data-close-form>Cancel</button><button type="submit" class="button-primary" id="submit-complaint">Add complaint</button></div>
+    </form>
+  </div>
+  <div class="modal-backdrop" id="detail-backdrop" role="dialog" aria-modal="true" aria-labelledby="detail-title">
+    <section class="modal"><div class="modal-header"><div><h2 id="detail-title"></h2><p id="detail-subtitle"></p></div><button class="close-button" data-close-detail aria-label="Close">×</button></div>
+      <div class="detail-grid"><div class="detail-field">CUSTOMER<strong id="detail-customer"></strong></div><div class="detail-field">EMAIL<strong id="detail-email"></strong></div><div class="detail-field">CATEGORY<strong id="detail-category"></strong></div><div class="detail-field">PRIORITY<strong id="detail-priority"></strong></div></div>
+      <div class="detail-message" id="detail-message"></div><div class="recommendation"><strong>✳ AI suggestion</strong><br><span id="detail-recommendation"></span></div>
+      <div class="detail-status"><label for="detail-status-select" style="font-size:11px;color:#7a8698">Update status</label><select id="detail-status-select"><option>Open</option><option>In progress</option><option>Resolved</option></select></div>
+    </section>
+  </div>
+  <div class="modal-backdrop" id="settings-backdrop" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+    <form class="modal" id="settings-form">
+      <div class="modal-header"><div><h2 id="settings-title">Workspace settings</h2><p>These details are saved to the Python backend.</p></div><button type="button" class="close-button" data-close-settings aria-label="Close">×</button></div>
+      <div class="form-grid">
+        <div class="field"><label for="settings-workspace">Workspace name</label><input id="settings-workspace" name="workspace_name" maxlength="100" required></div>
+        <div class="field"><label for="settings-team">Team name</label><input id="settings-team" name="team_name" maxlength="100" required></div>
+        <div class="field"><label for="settings-manager">Manager name</label><input id="settings-manager" name="manager_name" maxlength="100" required></div>
+        <div class="field"><label for="settings-role">Manager role</label><input id="settings-role" name="manager_role" maxlength="100" required></div>
+        <label class="setting-toggle"><input id="settings-ai-assist" name="ai_assist_enabled" type="checkbox"><span><strong>AI-assisted triage</strong><small>Automatically categorize and prioritize new complaints.</small></span></label>
+      </div>
+      <div class="form-footer"><button type="button" class="button-secondary" data-close-settings>Cancel</button><button type="submit" class="button-primary" id="save-settings">Save settings</button></div>
+    </form>
+  </div>
+  <div class="modal-backdrop" id="account-backdrop" role="dialog" aria-modal="true" aria-labelledby="account-title">
+    <form class="modal" id="account-form">
+      <div class="modal-header"><div><h2 id="account-title">Add account</h2><p>Add another profile to this workspace and switch to it.</p></div><button type="button" class="close-button" data-close-account aria-label="Close">×</button></div>
+      <div class="form-grid">
+        <div class="field"><label for="account-name">Full name</label><input id="account-name" name="name" required maxlength="100" placeholder="e.g. Taylor Morgan"></div>
+        <div class="field"><label for="account-role">Role</label><input id="account-role" name="role" required maxlength="100" placeholder="e.g. Support agent"></div>
+        <div class="field full"><label for="account-email">Email address</label><input id="account-email" name="email" type="email" required maxlength="254" placeholder="taylor@example.com"></div>
+      </div>
+      <div class="form-footer"><button type="button" class="button-secondary" data-close-account>Cancel</button><button type="submit" class="button-primary" id="save-account">Add account</button></div>
+    </form>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script>
+    const $ = (selector) => document.querySelector(selector);
+    const API_BASE = ["localhost", "127.0.0.1"].includes(location.hostname) && location.port !== "8000"
+      ? `${location.protocol}//${location.hostname}:8000`
+      : "";
+    let complaints = [];
+    let activeComplaint = null;
+    let appSettings = null;
+    let accounts = [];
+    let toastTimer;
+    let searchTimer;
+    let dashboardRequest = 0;
+    let dashboardData = null;
+
+    async function apiFetch(path, options) {
+      try {
+        return await fetch(`${API_BASE}${path}`, options);
+      } catch (error) {
+        if (error instanceof TypeError) {
+          throw new Error("Python backend is not reachable. Double-click run_app.bat to start it, then use http://127.0.0.1:8000.");
+        }
+        throw error;
+      }
+    }
+    async function readApiResponse(response) {
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || "The Python backend rejected the request.");
+      return data;
+    }
+    function initials(name) {
+      return name.split(/\s+/).slice(0, 2).map((part) => part[0] || "").join("").toUpperCase();
+    }
+    function escapeHTML(value) {
+      return String(value).replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      })[char]);
+    }
+    function badgeClass(status) {
+      return status === "Resolved" ? "status-resolved" : status === "In progress" ? "status-progress" : "status-open";
+    }
+    function render() {
+      if (!dashboardData) return;
+      const { stats, categories, insight } = dashboardData;
+      $("#metric-total").textContent = stats.total;
+      $("#metric-open").textContent = stats.open;
+      $("#metric-resolved").textContent = stats.resolved;
+      $("#metric-high").textContent = stats.high_priority;
+      $("#nav-count").textContent = stats.open;
+      $("#resolution-rate").textContent = `${stats.resolution_rate}%`;
+      $("#resolution-count").textContent = `${stats.resolved} / ${stats.total}`;
+      $("#resolution-caption").textContent = stats.total
+        ? `${stats.resolved} of ${stats.total} complaints have been resolved.`
+        : "Resolution statistics will appear once complaints are added.";
+      $("#results-count").textContent = `Showing ${complaints.length} of ${stats.total} complaints`;
+      $("#empty-state").hidden = complaints.length > 0;
+      $("#complaint-rows").innerHTML = complaints.map((item) => `
+        <tr data-id="${item.id}" tabindex="0" aria-label="Open complaint: ${escapeHTML(item.subject)}">
+          <td><div class="customer-cell"><div class="avatar">${escapeHTML(initials(item.customer))}</div><span class="customer-name">${escapeHTML(item.customer)}</span></div></td>
+          <td><span class="subject-cell">${escapeHTML(item.subject)}</span></td>
+          <td><span class="category-text">${escapeHTML(item.category)}</span></td>
+          <td><span class="badge priority-${item.priority.toLowerCase()}">${escapeHTML(item.priority)}</span></td>
+          <td><span class="badge ${badgeClass(item.status)}">${escapeHTML(item.status)}</span></td>
+        </tr>`).join("");
+
+      const max = Math.max(1, ...categories.map((item) => item.count));
+      $("#category-bars").innerHTML = categories.length ? categories.map((item) => `
+        <div class="bar-row"><span>${escapeHTML(item.name)}</span><div class="bar-track"><div class="bar-fill" style="width:${Math.round(item.count / max * 100)}%"></div></div><span class="bar-count">${item.count}</span></div>
+      `).join("") : '<div class="panel-caption">No complaints yet.</div>';
+      if (insight.top_category) {
+        const top = insight.top_category;
+        const unresolvedHigh = insight.high_priority_open;
+        $("#insight-summary").innerHTML = `You're hearing most about <strong>${escapeHTML(top.name.toLowerCase())}</strong> (${top.count} ${top.count === 1 ? "conversation" : "conversations"}).${unresolvedHigh ? ` There ${unresolvedHigh === 1 ? "is" : "are"} <strong>${unresolvedHigh} high-priority</strong> ${unresolvedHigh === 1 ? "issue" : "issues"} still to look at.` : " Your high-priority queue is clear."}`;
+      } else {
+        $("#insight-summary").textContent = "Add your first complaint to start spotting useful patterns.";
+      }
+    }
+    async function loadDashboard() {
+      const request = ++dashboardRequest;
+      const params = new URLSearchParams({
+        search: $("#search-input").value.trim(),
+        status: $("#status-filter").value
+      });
+      try {
+        const data = await readApiResponse(await apiFetch(`/api/dashboard?${params}`));
+        if (request !== dashboardRequest) return;
+        dashboardData = data;
+        complaints = dashboardData.complaints;
+        render();
+      } catch (error) {
+        if (request === dashboardRequest) {
+          showToast(error.message || "Something went wrong while loading the dashboard.");
+        }
+      }
+    }
+    function applySettings(settings) {
+      appSettings = settings;
+      $("#workspace-name").textContent = settings.workspace_name;
+      $("#team-name").textContent = settings.team_name;
+      $("#manager-name").textContent = settings.manager_name;
+      $("#manager-role").textContent = settings.manager_role;
+      $("#manager-avatar").textContent = initials(settings.manager_name);
+      $("#ai-assist-label").textContent = settings.ai_assist_enabled ? "AI assist is on" : "AI assist is off";
+      $("#ai-assist-description").textContent = settings.ai_assist_enabled
+        ? "New complaints are automatically categorized and prioritized to help your team respond faster."
+        : "New complaints are saved without automatic categorization or priority analysis.";
+    }
+    async function loadSettings() {
+      try {
+        const data = await readApiResponse(await apiFetch("/api/settings"));
+        applySettings(data.settings);
+      } catch (error) {
+        showToast(error.message || "Could not load workspace settings.");
+      }
+    }
+    function renderAccounts() {
+      $("#account-options").innerHTML = accounts.map((account) => `
+        <button type="button" class="account-option${account.is_active ? " active" : ""}" data-account-id="${account.id}"${account.is_active ? ' aria-current="true"' : ""}>
+          <span class="account-option-avatar">${escapeHTML(initials(account.name))}</span>
+          <span class="account-option-copy"><strong>${escapeHTML(account.name)}</strong><small>${escapeHTML(account.email)}</small></span>
+          ${account.is_active ? '<span class="account-option-check" aria-label="Current account">✓</span>' : ""}
+        </button>
+      `).join("");
+    }
+    async function loadAccounts() {
+      try {
+        const data = await readApiResponse(await apiFetch("/api/accounts"));
+        accounts = data.accounts;
+        renderAccounts();
+        if (data.active_account && appSettings) {
+          applySettings({
+            ...appSettings,
+            manager_name: data.active_account.name,
+            manager_role: data.active_account.role
+          });
+        }
+      } catch (error) {
+        showToast(error.message === "Failed to fetch"
+          ? "Cannot load accounts. Start the Python backend with app.py."
+          : error.message || "Could not load accounts.");
+      }
+    }
+    async function switchAccount(accountId) {
+      try {
+        const data = await readApiResponse(await apiFetch(`/api/accounts/${accountId}/active`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: "{}"
+        }));
+        accounts = data.accounts;
+        renderAccounts();
+        const account = data.active_account;
+        applySettings({
+          ...appSettings,
+          manager_name: account.name,
+          manager_role: account.role
+        });
+        $("#account-menu").hidden = true;
+        $("#profile-menu-button").setAttribute("aria-expanded", "false");
+        showToast(`Switched to ${account.name}.`);
+      } catch (error) {
+        showToast(error.message || "Could not switch account.");
+      }
+    }
+    function openSettings() {
+      if (!appSettings) {
+        showToast("Workspace settings are still loading from the Python backend.");
+        return;
+      }
+      $("#settings-workspace").value = appSettings.workspace_name;
+      $("#settings-team").value = appSettings.team_name;
+      $("#settings-manager").value = appSettings.manager_name;
+      $("#settings-role").value = appSettings.manager_role;
+      $("#settings-ai-assist").checked = appSettings.ai_assist_enabled;
+      $("#settings-backdrop").classList.add("open");
+    }
+    function showToast(message) {
+      const toast = $("#toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 3200);
+    }
+    function openDetail(id) {
+      activeComplaint = complaints.find((item) => item.id === Number(id));
+      if (!activeComplaint) return;
+      $("#detail-title").textContent = activeComplaint.subject;
+      $("#detail-subtitle").textContent = `Complaint #${activeComplaint.id} · ${new Date(activeComplaint.created_at).toLocaleDateString()}`;
+      $("#detail-customer").textContent = activeComplaint.customer;
+      $("#detail-email").textContent = activeComplaint.email;
+      $("#detail-category").textContent = activeComplaint.category;
+      $("#detail-priority").textContent = activeComplaint.priority;
+      $("#detail-message").textContent = activeComplaint.message;
+      $("#detail-recommendation").textContent = activeComplaint.recommendation;
+      $("#detail-status-select").value = activeComplaint.status;
+      $("#detail-backdrop").classList.add("open");
+    }
+    function closeDetail() {
+      $("#detail-backdrop").classList.remove("open");
+      activeComplaint = null;
+    }
+
+    $("#today-label").textContent = new Intl.DateTimeFormat("en", { weekday: "long", month: "long", day: "numeric" }).format(new Date());
+    $("#search-input").addEventListener("input", () => {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(loadDashboard, 250);
+    });
+    $("#status-filter").addEventListener("change", loadDashboard);
+    $("#refresh-button").addEventListener("click", loadDashboard);
+    document.querySelectorAll("[data-open-form]").forEach((button) => button.addEventListener("click", () => $("#form-backdrop").classList.add("open")));
+    document.querySelectorAll("[data-close-form]").forEach((button) => button.addEventListener("click", () => $("#form-backdrop").classList.remove("open")));
+    document.querySelectorAll("[data-close-detail]").forEach((button) => button.addEventListener("click", closeDetail));
+    $("#form-backdrop").addEventListener("click", (event) => {
+      if (event.target === $("#form-backdrop")) $("#form-backdrop").classList.remove("open");
+    });
+    $("#detail-backdrop").addEventListener("click", (event) => {
+      if (event.target === $("#detail-backdrop")) closeDetail();
+    });
+    $("#complaint-rows").addEventListener("click", (event) => {
+      const row = event.target.closest("tr[data-id]");
+      if (row) openDetail(row.dataset.id);
+    });
+    $("#complaint-rows").addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        const row = event.target.closest("tr[data-id]");
+        if (row) { event.preventDefault(); openDetail(row.dataset.id); }
+      }
+    });
+    $("#detail-status-select").addEventListener("change", async (event) => {
+      if (!activeComplaint) return;
+      try {
+        const response = await apiFetch(`/api/complaints/${activeComplaint.id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ status: event.target.value })
+        });
+        const data = await readApiResponse(response);
+        activeComplaint = data.complaint;
+        await loadDashboard();
+        showToast("Complaint status updated.");
+      } catch (error) {
+        event.target.value = activeComplaint.status;
+        showToast(error.message || "Could not update complaint.");
+      }
+    });
+    $("#complaint-form").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const button = $("#submit-complaint");
+      button.disabled = true;
+      button.textContent = "Adding...";
+      try {
+        const formData = new FormData(event.currentTarget);
+        const payload = Object.fromEntries(formData.entries());
+        const response = await apiFetch("/api/complaints", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        const data = await readApiResponse(response);
+        event.currentTarget.reset();
+        $("#form-backdrop").classList.remove("open");
+        await loadDashboard();
+        showToast(`Complaint added · ${data.analysis.category} · ${data.analysis.priority} priority`);
+      } catch (error) {
+        showToast(error.message || "Could not add complaint.");
+      } finally {
+        button.disabled = false;
+        button.textContent = "Add complaint";
+      }
+    });
+    document.querySelectorAll("[data-section]").forEach((link) => {
+      link.addEventListener("click", () => {
+        document.querySelectorAll(".nav-link").forEach((item) => item.classList.remove("active"));
+        link.classList.add("active");
+      });
+    });
+    $("#settings-link").addEventListener("click", (event) => {
+      event.preventDefault();
+      document.querySelectorAll(".nav-link").forEach((item) => item.classList.remove("active"));
+      event.currentTarget.classList.add("active");
+      openSettings();
+    });
+    document.querySelectorAll("[data-close-settings]").forEach((button) => {
+      button.addEventListener("click", () => $("#settings-backdrop").classList.remove("open"));
+    });
+    $("#settings-backdrop").addEventListener("click", (event) => {
+      if (event.target === $("#settings-backdrop")) $("#settings-backdrop").classList.remove("open");
+    });
+    $("#settings-form").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const button = $("#save-settings");
+      button.disabled = true;
+      button.textContent = "Saving...";
+      try {
+        const formData = new FormData(event.currentTarget);
+        const payload = Object.fromEntries(formData.entries());
+        payload.ai_assist_enabled = $("#settings-ai-assist").checked;
+        const response = await apiFetch("/api/settings", {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        const data = await readApiResponse(response);
+        applySettings(data.settings);
+        $("#settings-backdrop").classList.remove("open");
+        if (!data.settings.ai_assist_enabled) {
+          await loadDashboard();
+        }
+        showToast("Workspace settings saved.");
+      } catch (error) {
+        showToast(error.message || "Could not save workspace settings.");
+      } finally {
+        button.disabled = false;
+        button.textContent = "Save settings";
+      }
+    });
+    $("#profile-menu-button").addEventListener("click", async () => {
+      const menu = $("#account-menu");
+      const opening = menu.hidden;
+      menu.hidden = !opening;
+      $("#profile-menu-button").setAttribute("aria-expanded", String(opening));
+      if (opening) await loadAccounts();
+    });
+    $("#account-options").addEventListener("click", (event) => {
+      const button = event.target.closest("[data-account-id]");
+      if (button && !button.classList.contains("active")) {
+        switchAccount(button.dataset.accountId);
+      }
+    });
+    $("#add-account-button").addEventListener("click", () => {
+      $("#account-menu").hidden = true;
+      $("#profile-menu-button").setAttribute("aria-expanded", "false");
+      $("#account-form").reset();
+      $("#account-backdrop").classList.add("open");
+    });
+    $("#profile-settings-button").addEventListener("click", () => {
+      $("#account-menu").hidden = true;
+      $("#profile-menu-button").setAttribute("aria-expanded", "false");
+      openSettings();
+    });
+    document.querySelectorAll("[data-close-account]").forEach((button) => {
+      button.addEventListener("click", () => $("#account-backdrop").classList.remove("open"));
+    });
+    $("#account-backdrop").addEventListener("click", (event) => {
+      if (event.target === $("#account-backdrop")) $("#account-backdrop").classList.remove("open");
+    });
+    $("#account-form").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const button = $("#save-account");
+      button.disabled = true;
+      button.textContent = "Adding...";
+      try {
+        const payload = Object.fromEntries(new FormData(event.currentTarget).entries());
+        const data = await readApiResponse(await apiFetch("/api/accounts", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        }));
+        accounts = data.accounts;
+        renderAccounts();
+        if (data.active_account) {
+          applySettings({
+            ...appSettings,
+            manager_name: data.active_account.name,
+            manager_role: data.active_account.role
+          });
+        }
+        $("#account-backdrop").classList.remove("open");
+        showToast("Account added and switched.");
+      } catch (error) {
+        showToast(error.message || "Could not add account.");
+      } finally {
+        button.disabled = false;
+        button.textContent = "Add account";
+      }
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        $("#form-backdrop").classList.remove("open");
+        $("#settings-backdrop").classList.remove("open");
+        $("#account-backdrop").classList.remove("open");
+        $("#account-menu").hidden = true;
+        $("#profile-menu-button").setAttribute("aria-expanded", "false");
+        closeDetail();
+      }
+    });
+    loadDashboard();
+    loadSettings();
+    loadAccounts();
+  </script>
+</body>
+</html>

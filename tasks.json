@@ -1,0 +1,16 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start Python backend (required for Go Live)",
+      "type": "shell",
+      "command": "python app.py",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "isBackground": true,
+      "inAgents": true
+    }
+  ]
+}
